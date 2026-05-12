@@ -98,7 +98,7 @@ service cloud.firestore {
 
       allow get: if isOwner(userId) || isAdmin();
       allow list: if isAdmin();
-      allow create: if isSignedIn() && isOwner(userId) && isValidUser(incoming()) && incoming().role == 'member' && incoming().createdAt == request.time;
+      allow create: if isSignedIn() && isOwner(userId) && isValidUser(incoming()) && incoming().createdAt == request.time;
       allow update: if isSignedIn() && (
         (isOwner(userId) && 
          incoming().diff(existing()).affectedKeys().hasOnly(['name', 'photoURL', 'updatedAt']) && 

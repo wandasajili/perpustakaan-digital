@@ -41,12 +41,12 @@ const StatCard = ({ title, value, icon: Icon, trend, trendValue, accentColor }: 
     animate={{ opacity: 1, y: 0 }}
     className="admin-card p-8 group relative overflow-hidden"
   >
-    <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+    <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity text-slate-400">
       <Icon className="w-24 h-24 rotate-12" />
     </div>
     
     <div className="flex justify-between items-start mb-8 relative z-10">
-      <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center bg-slate-900/50 border border-slate-700 group-hover:border-indigo-500/50 transition-all shadow-inner", accentColor)}>
+      <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center bg-slate-50 border border-slate-100 group-hover:border-indigo-200 transition-all shadow-inner", accentColor)}>
         <Icon className="w-7 h-7" />
       </div>
       <div className={cn(
@@ -60,15 +60,15 @@ const StatCard = ({ title, value, icon: Icon, trend, trendValue, accentColor }: 
     
     <div className="relative z-10">
       <h3 className="text-slate-500 font-bold text-[10px] uppercase tracking-[0.2em] mb-2">{title}</h3>
-      <p className="text-4xl font-display font-bold tracking-tight text-white">{value}</p>
+      <p className="text-4xl font-display font-bold tracking-tight text-slate-900">{value}</p>
     </div>
     
     <div className="mt-6 flex items-center space-x-2 relative z-10">
-      <div className="flex-1 h-1.5 bg-slate-900 rounded-full overflow-hidden">
+      <div className="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
         <motion.div 
           initial={{ width: 0 }}
           animate={{ width: '70%' }}
-          className={cn("h-full rounded-full", trend === 'up' ? "bg-emerald-500/50" : "bg-indigo-500/50")}
+          className={cn("h-full rounded-full", trend === 'up' ? "bg-emerald-500" : "bg-indigo-500")}
         />
       </div>
       <span className="text-[10px] font-bold text-slate-500">Live</span>
@@ -168,21 +168,21 @@ export default function AdminDashboard() {
             {/* Header Actions */}
             <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6">
               <div>
-                <h1 className="text-4xl font-display font-bold text-white tracking-tight mb-2">Pusat Kendali Admin</h1>
+                <h1 className="text-4xl font-display font-bold text-slate-900 tracking-tight mb-2">Pusat Kendali Admin</h1>
                 <p className="text-slate-500 font-medium text-lg">Kelola ekosistem perpustakaan digital Anda dengan presisi.</p>
               </div>
               <div className="flex flex-wrap items-center gap-3 w-full xl:w-auto">
-                <div className="flex items-center p-1.5 bg-slate-900 border border-slate-800 rounded-2xl">
+                <div className="flex items-center p-1.5 bg-white border border-slate-100 rounded-2xl shadow-sm">
                   <button 
                     onClick={exportToPDF}
-                    className="p-3 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl transition-all"
+                    className="p-3 text-slate-400 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-all"
                     title="Export PDF"
                   >
                     <FileDown className="w-5 h-5" />
                   </button>
                   <button 
                     onClick={exportToExcel}
-                    className="p-3 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl transition-all"
+                    className="p-3 text-slate-400 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-all"
                     title="Export Excel"
                   >
                     <Download className="w-5 h-5" />
@@ -247,13 +247,13 @@ export default function AdminDashboard() {
                 </div>
                 <div className="flex justify-between items-center mb-10">
                   <div>
-                    <h3 className="font-display font-bold text-2xl text-white mb-1">Performa Literasi</h3>
+                    <h3 className="font-display font-bold text-2xl text-slate-900 mb-1">Performa Literasi</h3>
                     <p className="text-slate-500 text-sm">Analisis tren peminjaman 6 bulan terakhir</p>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="flex items-center space-x-2 px-3 py-1 bg-slate-950 border border-slate-800 rounded-lg">
+                    <div className="flex items-center space-x-2 px-3 py-1 bg-white border border-slate-100 rounded-lg shadow-sm">
                       <div className="w-2 h-2 rounded-full bg-indigo-500" />
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Buku</span>
+                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Buku</span>
                     </div>
                   </div>
                 </div>
@@ -266,27 +266,27 @@ export default function AdminDashboard() {
                           <stop offset="95%" stopColor="#6366f1" stopOpacity={0}/>
                         </linearGradient>
                       </defs>
-                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#1e293b" />
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
                       <XAxis 
                         dataKey="name" 
                         axisLine={false} 
                         tickLine={false} 
-                        tick={{fill: '#475569', fontSize: 11, fontWeight: 700}} 
+                        tick={{fill: '#64748b', fontSize: 11, fontWeight: 700}} 
                         dy={20} 
                       />
                       <YAxis 
                         axisLine={false} 
                         tickLine={false} 
-                        tick={{fill: '#475569', fontSize: 11}} 
+                        tick={{fill: '#64748b', fontSize: 11}} 
                       />
                       <Tooltip 
                         contentStyle={{ 
-                          backgroundColor: '#0f172a', 
+                          backgroundColor: '#ffffff', 
                           borderRadius: '16px', 
-                          border: '1px solid #1e293b',
-                          boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.5)'
+                          border: '1px solid #f1f5f9',
+                          boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.1)'
                         }}
-                        itemStyle={{ color: '#fff', fontSize: '12px', fontWeight: 'bold' }}
+                        itemStyle={{ color: '#0f172a', fontSize: '12px', fontWeight: 'bold' }}
                       />
                       <Area 
                         type="monotone" 
@@ -303,16 +303,16 @@ export default function AdminDashboard() {
               </div>
 
               <div className="admin-card p-10 h-[500px] flex flex-col">
-                <h3 className="font-display font-bold text-2xl text-white mb-2">Distribusi Kategori</h3>
+                <h3 className="font-display font-bold text-2xl text-slate-900 mb-2">Distribusi Kategori</h3>
                 <p className="text-slate-500 text-sm mb-10">Popularitas genre buku</p>
                 <div className="flex-1">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={CHART_DATA}>
-                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#1e293b" />
-                      <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#475569', fontSize: 11}} dy={15} />
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                      <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#64748b', fontSize: 11}} dy={15} />
                       <Tooltip 
-                         cursor={{fill: '#1e293b', radius: 12}}
-                         contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #1e293b', borderRadius: '12px' }}
+                         cursor={{fill: '#f8fafc', radius: 12}}
+                         contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #f1f5f9', borderRadius: '12px' }}
                       />
                       <Bar dataKey="categories" radius={[8, 8, 0, 0]} barSize={32}>
                         {CHART_DATA.map((entry, index) => (
@@ -327,32 +327,32 @@ export default function AdminDashboard() {
 
             {/* Real-time Activity Feed */}
             <div className="admin-card overflow-hidden">
-                <div className="p-10 border-b border-slate-800 flex justify-between items-center">
+                <div className="p-10 border-b border-slate-100 flex justify-between items-center">
                   <div>
-                    <h3 className="font-display font-bold text-2xl text-white mb-1">Aktivitas Sistem</h3>
+                    <h3 className="font-display font-bold text-2xl text-slate-900 mb-1">Aktivitas Sistem</h3>
                     <p className="text-slate-500 text-sm">Pemantauan real-time transaksi literasi</p>
                   </div>
-                  <button className="p-3 hover:bg-slate-800 rounded-xl transition-colors">
+                  <button className="p-3 hover:bg-slate-50 rounded-xl transition-colors">
                     <MoreVertical className="w-5 h-5 text-slate-500" />
                   </button>
                 </div>
-                <div className="divide-y divide-slate-800/50">
+                <div className="divide-y divide-slate-100">
                   {recentActivities.length > 0 ? recentActivities.map((log, i) => (
                     <motion.div 
                       key={log.id} 
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      className="p-8 hover:bg-slate-800/30 transition-all flex items-center justify-between group"
+                      className="p-8 hover:bg-slate-50 transition-all flex items-center justify-between group"
                     >
                       <div className="flex items-center space-x-6">
                         <div className={cn(
-                          "w-14 h-14 rounded-2xl flex items-center justify-center transition-all shadow-inner border border-slate-800",
+                          "w-14 h-14 rounded-2xl flex items-center justify-center transition-all shadow-inner border border-slate-100",
                           log.type === 'admin' ? "bg-indigo-500/10 text-indigo-500" : "bg-sky-500/10 text-sky-500"
                         )}>
                           {log.type === 'admin' ? <ShieldCheck className="w-6 h-6" /> : <Users className="w-6 h-6" />}
                         </div>
                         <div>
-                          <p className="text-white font-bold text-lg mb-1">{log.action}</p>
+                          <p className="text-slate-900 font-bold text-lg mb-1">{log.action}</p>
                           <div className="flex items-center space-x-3 text-slate-500 text-xs font-bold uppercase tracking-widest">
                             <span className="text-slate-400">{log.userName}</span>
                             <span>•</span>
@@ -375,10 +375,10 @@ export default function AdminDashboard() {
                     </div>
                   )}
                 </div>
-                <div className="bg-slate-900/50 p-6 text-center border-t border-slate-800">
+                <div className="bg-slate-50 p-6 text-center border-t border-slate-100">
                    <button 
                     onClick={() => setActiveTab('logs')}
-                    className="text-xs font-black text-indigo-400 uppercase tracking-widest hover:text-indigo-300 transition-colors"
+                    className="text-xs font-black text-indigo-600 uppercase tracking-widest hover:text-indigo-500 transition-colors"
                   >
                     Lihat Semua Aktivitas
                    </button>

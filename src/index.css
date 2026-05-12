@@ -27,7 +27,7 @@
 }
 
 .admin-glass {
-  @apply bg-slate-800/50 backdrop-blur-md border border-slate-700/50;
+  @apply bg-white/50 backdrop-blur-md border border-slate-200/50;
 }
 
 .user-card {
@@ -35,7 +35,7 @@
 }
 
 .admin-card {
-  @apply bg-slate-800 rounded-3xl border border-slate-700 shadow-xl shadow-black/20 hover:border-indigo-500/30 transition-all duration-300;
+  @apply bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/40 transition-all duration-300;
 }
 
 .markdown-body {

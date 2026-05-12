@@ -38,7 +38,7 @@ export default function LogsTab() {
              </div>
              <span className="text-[10px] font-black text-indigo-400 uppercase tracking-[0.3em]">Live System Feed</span>
           </div>
-          <h1 className="text-4xl font-display font-bold text-white tracking-tight leading-none">Aktivitas Sistem</h1>
+          <h1 className="text-4xl font-display font-bold text-slate-900 tracking-tight leading-none">Aktivitas Sistem</h1>
           <p className="text-slate-500 font-medium mt-3">Monitor investigasi setiap pergerakan data dalam ekosistem.</p>
         </div>
       </div>
@@ -47,7 +47,7 @@ export default function LogsTab() {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-slate-900/50 border-b border-slate-800">
+              <tr className="bg-slate-50 border-b border-slate-100">
                 <th className="px-10 py-7 text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] leading-none">Analisis Aktivitas</th>
                 <th className="px-10 py-7 text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] leading-none">Subjek/Entitas</th>
                 <th className="px-10 py-7 text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] leading-none">Sinkronisasi Waktu</th>
@@ -75,7 +75,7 @@ export default function LogsTab() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     key={log.id} 
-                    className="hover:bg-slate-800/30 transition-all group"
+                    className="hover:bg-slate-50 transition-all group"
                   >
                     <td className="px-10 py-7">
                       <div className="flex items-center space-x-6">
@@ -88,10 +88,10 @@ export default function LogsTab() {
                           {log.type === 'admin' ? <ShieldCheck className="w-6 h-6" /> : <User className="w-6 h-6" />}
                         </div>
                         <div>
-                          <p className="font-bold text-white text-lg group-hover:text-indigo-400 transition-colors uppercase tracking-tight leading-none mb-2">
+                          <p className="font-bold text-slate-900 text-lg group-hover:text-indigo-400 transition-colors uppercase tracking-tight leading-none mb-2">
                              {log.action}
                           </p>
-                          <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest leading-none bg-slate-950 px-2 py-0.5 rounded border border-slate-800 inline-block">
+                          <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest leading-none bg-white px-2 py-0.5 rounded border border-slate-100 inline-block">
                              {log.details || 'System Operation'}
                           </p>
                         </div>
@@ -99,17 +99,17 @@ export default function LogsTab() {
                     </td>
                     <td className="px-10 py-7">
                       <div className="flex items-center space-x-4">
-                        <div className="w-9 h-9 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-center text-slate-500">
+                        <div className="w-9 h-9 bg-white border border-slate-100 rounded-xl flex items-center justify-center text-slate-500">
                           <User className="w-4 h-4" />
                         </div>
                         <div className="flex flex-col">
-                           <span className="text-white font-bold leading-none mb-1">{log.userName || 'Root User'}</span>
+                           <span className="text-slate-900 font-bold leading-none mb-1">{log.userName || 'Root User'}</span>
                            <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest leading-none">Entitas Pengguna</span>
                         </div>
                       </div>
                     </td>
                     <td className="px-10 py-7">
-                      <div className="flex items-center space-x-3 text-slate-400 font-medium bg-slate-950/50 py-2.5 px-4 rounded-2xl border border-slate-800 w-fit">
+                      <div className="flex items-center space-x-3 text-slate-500 font-medium bg-white/50 py-2.5 px-4 rounded-2xl border border-slate-100 w-fit">
                         <Calendar className="w-4 h-4 text-indigo-500" />
                         <span className="text-xs font-bold leading-none tracking-tight">{log.createdAt?.toDate ? formatDate(log.createdAt.toDate()) : 'Synchronizing...'}</span>
                       </div>

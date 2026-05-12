@@ -79,13 +79,13 @@ export default function BorrowingsTab() {
     <div className="space-y-10 animate-in fade-in duration-700">
       <div className="flex flex-col md:flex-row justify-between items-center gap-6">
         <div>
-           <h2 className="text-3xl font-display font-bold text-white tracking-tight">Logistik Peminjaman</h2>
+           <h2 className="text-3xl font-display font-bold text-slate-900 tracking-tight">Logistik Peminjaman</h2>
            <p className="text-slate-500 font-medium">Manajemen distribusi dan siklus buku digital.</p>
         </div>
-        <div className="flex items-center space-x-3 p-1.5 bg-slate-900 border border-slate-800 rounded-2xl">
+        <div className="flex items-center space-x-3 p-1.5 bg-white border border-slate-100 rounded-2xl">
            <button className="px-6 py-2 bg-indigo-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-xl">Semua</button>
-           <button className="px-6 py-2 text-slate-500 hover:text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-colors">Aktif</button>
-           <button className="px-6 py-2 text-slate-500 hover:text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-colors">Selesai</button>
+           <button className="px-6 py-2 text-slate-500 hover:text-slate-900 rounded-xl text-[10px] font-black uppercase tracking-widest transition-colors">Aktif</button>
+           <button className="px-6 py-2 text-slate-500 hover:text-slate-900 rounded-xl text-[10px] font-black uppercase tracking-widest transition-colors">Selesai</button>
         </div>
       </div>
 
@@ -93,7 +93,7 @@ export default function BorrowingsTab() {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-slate-900/50 border-b border-slate-800">
+              <tr className="bg-slate-50 border-b border-slate-100">
                 <th className="px-10 py-7 text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] leading-none">Dokumentasi Transaksi</th>
                 <th className="px-10 py-7 text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] leading-none">Peminjam</th>
                 <th className="px-10 py-7 text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] leading-none text-center">Tenggat Waktu</th>
@@ -116,26 +116,26 @@ export default function BorrowingsTab() {
                   </td>
                 </tr>
               ) : borrowings.map(b => (
-                <tr key={b.id} className="hover:bg-slate-800/30 transition-all group">
+                <tr key={b.id} className="hover:bg-slate-50 transition-all group">
                   <td className="px-10 py-7">
                     <div className="flex items-center space-x-6">
-                      <div className="w-12 h-12 bg-slate-950 border border-slate-800 text-indigo-400 rounded-2xl flex items-center justify-center shadow-inner group-hover:border-indigo-500/30 transition-all">
+                      <div className="w-12 h-12 bg-white border border-slate-100 text-indigo-400 rounded-2xl flex items-center justify-center shadow-inner group-hover:border-indigo-500/30 transition-all">
                         <Repeat className="w-6 h-6" />
                       </div>
                       <div>
-                        <p className="font-bold text-white text-lg group-hover:text-indigo-400 transition-colors uppercase tracking-tight leading-none mb-2">{b.bookTitle}</p>
-                        <span className="text-[10px] text-slate-600 font-black uppercase tracking-widest leading-none bg-slate-950 px-2 py-0.5 rounded border border-slate-800">TXID: {b.id.slice(0, 8)}</span>
+                        <p className="font-bold text-slate-900 text-lg group-hover:text-indigo-400 transition-colors uppercase tracking-tight leading-none mb-2">{b.bookTitle}</p>
+                        <span className="text-[10px] text-slate-600 font-black uppercase tracking-widest leading-none bg-white px-2 py-0.5 rounded border border-slate-100">TXID: {b.id.slice(0, 8)}</span>
                       </div>
                     </div>
                   </td>
                   <td className="px-10 py-7">
                     <div className="flex flex-col">
-                       <span className="text-white font-bold mb-1 leading-none">{b.userName}</span>
+                       <span className="text-slate-900 font-bold mb-1 leading-none">{b.userName}</span>
                        <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Identitas User</span>
                     </div>
                   </td>
                   <td className="px-10 py-7">
-                    <div className="flex items-center justify-center space-x-3 text-slate-400 font-medium bg-slate-950/50 py-2 px-4 rounded-xl border border-slate-800">
+                    <div className="flex items-center justify-center space-x-3 text-slate-500 font-medium bg-white/50 py-2 px-4 rounded-xl border border-slate-100">
                       <Clock className={cn("w-4 h-4", b.status === 'overdue' ? 'text-rose-500' : 'text-amber-500')} />
                       <span className="text-sm font-bold tracking-tight">{b.dueDate?.toDate ? formatDate(b.dueDate.toDate()) : '—'}</span>
                     </div>

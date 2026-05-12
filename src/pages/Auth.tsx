@@ -20,6 +20,7 @@ const registerSchema = z.object({
   name: z.string().min(2, 'Nama minimal 2 karakter'),
   email: z.string().email('Email tidak valid'),
   password: z.string().min(6, 'Password minimal 6 karakter'),
+  role: z.enum(['member', 'admin']).default('member'),
 });
 
 export default function Auth() {
@@ -47,7 +48,7 @@ export default function Auth() {
           await setDoc(doc(db, 'users', user.uid), {
             name: data.name,
             email: data.email,
-            role: 'member',
+            role: data.role || 'member',
             createdAt: serverTimestamp(),
           });
         } catch (e) {
@@ -194,6 +195,31 @@ export default function Auth() {
               {errors.password && <p className="text-[10px] text-rose-500 font-bold ml-1 uppercase tracking-tight">{errors.password.message as string}</p>}
             </div>
 
+            <AnimatePresence mode="wait">
+              {!isLogin && (
+                <motion.div
+                  key="role"
+                  initial={{ opacity: 0, height: 0, y: -12 }}
+                  animate={{ opacity: 1, height: 'auto', y: 0 }}
+                  exit={{ opacity: 0, height: 0, y: -12 }}
+                  className="space-y-2"
+                >
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Pilih Peran</label>
+                  <div className="relative">
+                    <User className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300" />
+                    <select
+                      {...register('role')}
+                      className="w-full pl-14 pr-6 py-4.5 bg-slate-50 border border-transparent focus:border-violet-200 focus:bg-white focus:ring-[12px] focus:ring-violet-500/5 rounded-2xl transition-all outline-hidden font-bold text-slate-900 appearance-none"
+                    >
+                      <option value="member">Customer / Member</option>
+                      <option value="admin">Admin</option>
+                    </select>
+                  </div>
+                  {errors.role && <p className="text-[10px] text-rose-500 font-bold ml-1 uppercase tracking-tight">{errors.role.message as string}</p>}
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             <button
               disabled={loading}
               className="w-full py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-[24px] font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center space-x-3 shadow-[0_20px_40px_rgba(37,99,235,0.2)] hover:shadow-[0_20px_50px_rgba(37,99,235,0.4)] transition-all active:scale-[0.98] disabled:opacity-50 disabled:active:scale-100 group mt-10"
@@ -207,6 +233,30 @@ export default function Auth() {
                 </>
               )}
             </button>
+            <AnimatePresence mode="wait">
+              {isLogin && (
+                <motion.div
+                  key="demo-creds"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="mt-6 p-4 bg-blue-50/50 border border-blue-100 rounded-2xl"
+                >
+                  <p className="text-[10px] font-black text-blue-800 uppercase tracking-widest mb-3">Akun Demo (Opsional)</p>
+                  <div className="space-y-2 text-xs font-medium text-slate-600">
+                    <div className="flex justify-between items-center bg-white p-2 rounded-lg border border-slate-100">
+                      <span className="font-bold text-slate-800">Admin</span>
+                      <span className="font-mono text-[10px] text-slate-500">admin@pustaka.id / admin123</span>
+                    </div>
+                    <div className="flex justify-between items-center bg-white p-2 rounded-lg border border-slate-100">
+                      <span className="font-bold text-slate-800">Customer</span>
+                      <span className="font-mono text-[10px] text-slate-500">user@pustaka.id / user123</span>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
           </form>
 
           <p className="mt-12 text-[11px] text-slate-400 font-bold uppercase tracking-widest">

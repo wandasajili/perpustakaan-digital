@@ -174,13 +174,13 @@ export default function BooksTab({ defaultOpenModal = false }: { defaultOpenModa
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Cari pustaka digital..." 
-            className="w-full pl-14 pr-8 py-4 bg-slate-900/50 border border-slate-800 rounded-3xl outline-hidden focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/5 transition-all text-white placeholder:text-slate-600 font-medium"
+            className="w-full pl-14 pr-8 py-4 bg-slate-50 border border-slate-100 rounded-3xl outline-hidden focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/5 transition-all text-slate-900 placeholder:text-slate-400 font-medium"
           />
         </div>
         <div className="flex items-center space-x-3 w-full xl:w-auto">
           <button 
             onClick={exportExcel}
-            className="flex-1 xl:flex-none flex items-center justify-center space-x-3 px-8 py-4 bg-slate-900 border border-slate-800 rounded-2xl font-bold hover:bg-slate-800 transition-all text-slate-300 shadow-xl"
+            className="flex-1 xl:flex-none flex items-center justify-center space-x-3 px-8 py-4 bg-white border border-slate-100 rounded-2xl font-bold hover:bg-slate-50 transition-all text-slate-600 shadow-xl"
           >
             <Download className="w-5 h-5" />
             <span>Ekspor Excel</span>
@@ -200,7 +200,7 @@ export default function BooksTab({ defaultOpenModal = false }: { defaultOpenModa
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-slate-900/50">
+              <tr className="bg-slate-50">
                 <th className="px-10 py-6 text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Karya Sastra</th>
                 <th className="px-10 py-6 text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Klasifikasi</th>
                 <th className="px-10 py-6 text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Visibilitas</th>
@@ -219,7 +219,7 @@ export default function BooksTab({ defaultOpenModal = false }: { defaultOpenModa
               ) : filteredBooks.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="px-10 py-32 text-center text-slate-500">
-                    <div className="w-20 h-20 bg-slate-900 rounded-3xl flex items-center justify-center mx-auto mb-6 border border-slate-800 shadow-inner">
+                    <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center mx-auto mb-6 border border-slate-100 shadow-inner">
                       <BookIcon className="w-10 h-10 opacity-20" />
                     </div>
                     <span className="font-bold uppercase tracking-[0.3em] text-xs">Pustaka masih kosong</span>
@@ -227,7 +227,7 @@ export default function BooksTab({ defaultOpenModal = false }: { defaultOpenModa
                 </tr>
               ) : (
                 filteredBooks.map((book) => (
-                  <tr key={book.id} className="hover:bg-slate-800/30 transition-all group">
+                  <tr key={book.id} className="hover:bg-slate-50 transition-all group">
                     <td className="px-10 py-6">
                       <div className="flex items-center space-x-6">
                         <div className="relative group/cover">
@@ -240,13 +240,13 @@ export default function BooksTab({ defaultOpenModal = false }: { defaultOpenModa
                           <div className="absolute inset-0 bg-indigo-500/10 opacity-0 group-hover/cover:opacity-100 transition-opacity rounded-xl" />
                         </div>
                         <div>
-                          <p className="font-bold text-white text-lg group-hover:text-indigo-400 transition-colors uppercase tracking-tight">{book.title}</p>
+                          <p className="font-bold text-slate-900 text-lg group-hover:text-indigo-400 transition-colors uppercase tracking-tight">{book.title}</p>
                           <p className="text-sm text-slate-500 font-medium">{book.author}</p>
                         </div>
                       </div>
                     </td>
                     <td className="px-10 py-6">
-                      <span className="px-4 py-1 bg-slate-950 border border-slate-800 text-slate-400 text-[10px] font-black rounded-lg uppercase tracking-widest">{book.categoryName}</span>
+                      <span className="px-4 py-1 bg-white border border-slate-100 text-slate-500 text-[10px] font-black rounded-lg uppercase tracking-widest">{book.categoryName}</span>
                     </td>
                     <td className="px-10 py-6">
                       <span className={cn(
@@ -261,10 +261,10 @@ export default function BooksTab({ defaultOpenModal = false }: { defaultOpenModa
                     <td className="px-10 py-6">
                       <div className="flex flex-col max-w-[120px]">
                         <div className="flex justify-between items-center mb-2">
-                           <span className="text-xs font-black text-white">{book.available} <span className="text-slate-500 text-[10px]">/ {book.stock}</span></span>
+                           <span className="text-xs font-black text-slate-900">{book.available} <span className="text-slate-500 text-[10px]">/ {book.stock}</span></span>
                            <span className="text-[10px] font-black text-slate-500">{Math.round((book.available / book.stock) * 100)}%</span>
                         </div>
-                        <div className="w-full h-1.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
+                        <div className="w-full h-1.5 bg-white rounded-full overflow-hidden border border-slate-100">
                           <motion.div 
                             initial={{ width: 0 }}
                             animate={{ width: `${(book.available / book.stock) * 100}%` }}
@@ -280,13 +280,13 @@ export default function BooksTab({ defaultOpenModal = false }: { defaultOpenModa
                       <div className="flex items-center justify-end space-x-3">
                         <button 
                           onClick={() => openEdit(book)}
-                          className="p-3 bg-slate-900 border border-slate-800 text-slate-400 rounded-xl hover:text-indigo-400 hover:border-indigo-500/50 hover:bg-indigo-500/5 transition-all shadow-xl"
+                          className="p-3 bg-white border border-slate-100 text-slate-500 rounded-xl hover:text-indigo-400 hover:border-indigo-500/50 hover:bg-indigo-500/5 transition-all shadow-xl"
                         >
                           <Edit2 className="w-4 h-4" />
                         </button>
                         <button 
                           onClick={() => handleDelete(book.id)}
-                          className="p-3 bg-slate-900 border border-slate-800 text-slate-400 rounded-xl hover:text-rose-500 hover:border-rose-500/50 hover:bg-rose-500/5 transition-all shadow-xl"
+                          className="p-3 bg-white border border-slate-100 text-slate-500 rounded-xl hover:text-rose-500 hover:border-rose-500/50 hover:bg-rose-500/5 transition-all shadow-xl"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -303,19 +303,19 @@ export default function BooksTab({ defaultOpenModal = false }: { defaultOpenModa
       {/* Modal */}
       <AnimatePresence>
         {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-slate-950/80 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-white/80 backdrop-blur-md">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 30 }}
-              className="bg-slate-900 w-full max-w-3xl rounded-[40px] shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-slate-800 overflow-hidden flex flex-col max-h-[90vh]"
+              className="bg-white w-full max-w-3xl rounded-[40px] shadow-2xl shadow-slate-200/50 border border-slate-100 overflow-hidden flex flex-col max-h-[90vh]"
             >
-              <div className="p-12 border-b border-slate-800 flex justify-between items-center bg-slate-950/30">
+              <div className="p-12 border-b border-slate-100 flex justify-between items-center bg-white/30">
                 <div>
-                  <h3 className="text-3xl font-display font-bold text-white tracking-tight">{editingBook ? 'Modifikasi Pustaka' : 'Manifesto Buku Baru'}</h3>
+                  <h3 className="text-3xl font-display font-bold text-slate-900 tracking-tight">{editingBook ? 'Modifikasi Pustaka' : 'Manifesto Buku Baru'}</h3>
                   <p className="text-slate-500 font-medium mt-2">Pastikan metadata literatur akurat dan lengkap.</p>
                 </div>
-                <button onClick={() => setIsModalOpen(false)} className="w-14 h-14 flex items-center justify-center rounded-2xl bg-slate-950 border border-slate-800 hover:bg-slate-800 transition-all text-slate-400">
+                <button onClick={() => setIsModalOpen(false)} className="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-slate-100 hover:bg-slate-50 transition-all text-slate-500">
                   <X className="w-7 h-7" />
                 </button>
               </div>
@@ -324,12 +324,12 @@ export default function BooksTab({ defaultOpenModal = false }: { defaultOpenModa
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div className="space-y-3">
                     <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-2">Judul Pustaka</label>
-                    <input {...register('title')} className="w-full px-8 py-5 bg-slate-950 border border-slate-800 focus:border-indigo-500/50 text-white rounded-3xl outline-hidden font-bold transition-all placeholder:text-slate-800" placeholder="e.g. Filosofi Teras" />
+                    <input {...register('title')} className="w-full px-8 py-5 bg-white border border-slate-100 focus:border-indigo-500/50 text-slate-900 rounded-3xl outline-hidden font-bold transition-all placeholder:text-slate-400" placeholder="e.g. Filosofi Teras" />
                     {errors.title && <p className="text-xs text-rose-500 font-bold mt-2 ml-2 tracking-wide">{errors.title.message as string}</p>}
                   </div>
                   <div className="space-y-3">
                     <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-2">Penulis / Kreator</label>
-                    <input {...register('author')} className="w-full px-8 py-5 bg-slate-950 border border-slate-800 focus:border-indigo-500/50 text-white rounded-3xl outline-hidden font-bold transition-all placeholder:text-slate-800" placeholder="e.g. Henry Manampiring" />
+                    <input {...register('author')} className="w-full px-8 py-5 bg-white border border-slate-100 focus:border-indigo-500/50 text-slate-900 rounded-3xl outline-hidden font-bold transition-all placeholder:text-slate-400" placeholder="e.g. Henry Manampiring" />
                     {errors.author && <p className="text-xs text-rose-500 font-bold mt-2 ml-2 tracking-wide">{errors.author.message as string}</p>}
                   </div>
                 </div>
@@ -338,9 +338,9 @@ export default function BooksTab({ defaultOpenModal = false }: { defaultOpenModa
                   <div className="space-y-3">
                     <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-2">Klasifikasi Kategori</label>
                     <div className="relative group">
-                      <select {...register('categoryId')} className="w-full px-8 py-5 bg-slate-950 border border-slate-800 focus:border-indigo-500/50 text-white rounded-3xl outline-hidden font-bold transition-all appearance-none cursor-pointer">
-                        <option value="" className="bg-slate-950">Pilih Kategori</option>
-                        {categories.map(c => <option key={c.id} value={c.id} className="bg-slate-950">{c.name}</option>)}
+                      <select {...register('categoryId')} className="w-full px-8 py-5 bg-white border border-slate-100 focus:border-indigo-500/50 text-slate-900 rounded-3xl outline-hidden font-bold transition-all appearance-none cursor-pointer">
+                        <option value="" className="bg-white">Pilih Kategori</option>
+                        {categories.map(c => <option key={c.id} value={c.id} className="bg-white">{c.name}</option>)}
                       </select>
                       <Filter className="absolute right-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-700 pointer-events-none group-hover:text-indigo-500 transition-colors" />
                     </div>
@@ -349,12 +349,12 @@ export default function BooksTab({ defaultOpenModal = false }: { defaultOpenModa
                   <div className="grid grid-cols-2 gap-6">
                     <div className="space-y-3">
                       <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-2">Stok</label>
-                      <input type="number" {...register('stock', { valueAsNumber: true })} className="w-full px-8 py-5 bg-slate-950 border border-slate-800 focus:border-indigo-500/50 text-white rounded-3xl outline-hidden font-bold transition-all" />
+                      <input type="number" {...register('stock', { valueAsNumber: true })} className="w-full px-8 py-5 bg-white border border-slate-100 focus:border-indigo-500/50 text-slate-900 rounded-3xl outline-hidden font-bold transition-all" />
                       {errors.stock && <p className="text-xs text-rose-500 font-bold mt-2 ml-2 tracking-wide">{errors.stock.message as string}</p>}
                     </div>
                     <div className="space-y-3">
                       <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-2">Vibrasi Tahun</label>
-                      <input type="number" {...register('publishedYear', { valueAsNumber: true })} className="w-full px-8 py-5 bg-slate-950 border border-slate-800 focus:border-indigo-500/50 text-white rounded-3xl outline-hidden font-bold transition-all" />
+                      <input type="number" {...register('publishedYear', { valueAsNumber: true })} className="w-full px-8 py-5 bg-white border border-slate-100 focus:border-indigo-500/50 text-slate-900 rounded-3xl outline-hidden font-bold transition-all" />
                     </div>
                   </div>
                 </div>
@@ -362,23 +362,23 @@ export default function BooksTab({ defaultOpenModal = false }: { defaultOpenModa
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                    <div className="space-y-3">
                     <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-2">Identifikasi ISBN</label>
-                    <input {...register('isbn')} className="w-full px-8 py-5 bg-slate-950 border border-slate-800 focus:border-indigo-500/50 text-white rounded-3xl outline-hidden font-bold transition-all placeholder:text-slate-800" placeholder="e.g. 978-602-06-3317-6" />
+                    <input {...register('isbn')} className="w-full px-8 py-5 bg-white border border-slate-100 focus:border-indigo-500/50 text-slate-900 rounded-3xl outline-hidden font-bold transition-all placeholder:text-slate-400" placeholder="e.g. 978-602-06-3317-6" />
                   </div>
                   <div className="space-y-3">
                     <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-2">Visual Aset (URL)</label>
-                    <input {...register('coverUrl')} className="w-full px-8 py-5 bg-slate-950 border border-slate-800 focus:border-indigo-500/50 text-white rounded-3xl outline-hidden font-bold transition-all placeholder:text-slate-800" placeholder="https://unsplash.com/your-image.jpg" />
+                    <input {...register('coverUrl')} className="w-full px-8 py-5 bg-white border border-slate-100 focus:border-indigo-500/50 text-slate-900 rounded-3xl outline-hidden font-bold transition-all placeholder:text-slate-400" placeholder="https://unsplash.com/your-image.jpg" />
                   </div>
                 </div>
 
                 <div className="space-y-3">
                   <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-2">Semantik Deskripsi</label>
-                  <textarea {...register('description')} rows={4} className="w-full px-8 py-6 bg-slate-950 border border-slate-800 focus:border-indigo-500/50 text-white rounded-3xl outline-hidden font-bold transition-all resize-none placeholder:text-slate-800" placeholder="Deskripsikan esensi dari buku ini secara mendalam..." />
+                  <textarea {...register('description')} rows={4} className="w-full px-8 py-6 bg-white border border-slate-100 focus:border-indigo-500/50 text-slate-900 rounded-3xl outline-hidden font-bold transition-all resize-none placeholder:text-slate-400" placeholder="Deskripsikan esensi dari buku ini secara mendalam..." />
                 </div>
 
                 <div className="pt-10 flex space-x-6">
-                  <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 py-5 bg-slate-950 border border-slate-800 text-slate-500 rounded-3xl font-black uppercase tracking-widest hover:bg-slate-800 transition-all active:scale-95">Diskard</button>
+                  <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 py-5 bg-white border border-slate-100 text-slate-500 rounded-3xl font-black uppercase tracking-widest hover:bg-slate-50 transition-all active:scale-95">Diskard</button>
                   <button type="submit" disabled={loading} className="flex-[2] py-5 bg-indigo-600 text-white rounded-3xl font-black shadow-2xl shadow-indigo-600/30 uppercase tracking-[0.2em] hover:bg-indigo-500 transition-all active:scale-95 disabled:opacity-50">
-                    {loading ? <Loader2 className="w-6 h-6 animate-spin mx-auto text-white" /> : (editingBook ? 'Perbarui Manifesto' : 'Terbitkan Pustaka')}
+                    {loading ? <Loader2 className="w-6 h-6 animate-spin mx-auto text-slate-900" /> : (editingBook ? 'Perbarui Manifesto' : 'Terbitkan Pustaka')}
                   </button>
                 </div>
               </form>
