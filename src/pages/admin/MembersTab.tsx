@@ -37,8 +37,6 @@ export default function MembersTab() {
     }
 
     const newRole = member.role === 'admin' ? 'member' : 'admin';
-    if (!window.confirm(`Ganti peran ${member.name} menjadi ${newRole === 'admin' ? 'Administrator' : 'Anggota'}?`)) return;
-
     try {
       setLoading(true);
       await updateDoc(doc(db, 'users', member.uid), { role: newRole });
@@ -63,8 +61,6 @@ export default function MembersTab() {
       alert("Anda tidak dapat menghapus akun Anda sendiri.");
       return;
     }
-
-    if (!window.confirm(`PERINGATAN: Hapus permanen entitas ${member.name}? Data sirkulasi mungkin akan terputus.`)) return;
 
     try {
       setLoading(true);

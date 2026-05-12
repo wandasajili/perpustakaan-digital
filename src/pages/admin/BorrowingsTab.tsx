@@ -30,8 +30,6 @@ export default function BorrowingsTab() {
   }, []);
 
   const handleReturn = async (borrowing: Borrowing) => {
-    if (!window.confirm(`Konfirmasi pengembalian buku "${borrowing.bookTitle}"?`)) return;
-    
     try {
       setLoading(true);
       // 1. Update borrowing status

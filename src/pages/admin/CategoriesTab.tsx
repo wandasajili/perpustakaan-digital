@@ -66,7 +66,6 @@ export default function CategoriesTab() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!window.confirm('Hapus klasifikasi kategori ini dari sistem?')) return;
     try {
       const catToDelete = categories.find(c => c.id === id);
       await deleteDoc(doc(db, 'categories', id));

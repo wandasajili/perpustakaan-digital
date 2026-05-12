@@ -115,7 +115,6 @@ export default function BooksTab({ defaultOpenModal = false }: { defaultOpenModa
   };
 
   const handleDelete = async (id: string) => {
-    if (!window.confirm('Yakin ingin menghapus buku ini?')) return;
     try {
       const bookToDelete = books.find(b => b.id === id);
       await deleteDoc(doc(db, 'books', id));
